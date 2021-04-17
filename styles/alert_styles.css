@@ -1,0 +1,94 @@
+.alert-message {
+    overflow-x: auto;
+    position: fixed;
+    left: 25%;
+    top: 20rem;
+    width: 50%;
+    height: 35rem;
+    z-index: 10000;
+    display: none;
+}
+
+.message-container {
+    position: relative;
+    height: 70%;
+    top: 20%;
+    padding: 4rem;
+    background-color: rgb(54, 54, 54);
+    border-radius: 1rem;
+    box-shadow: 0 0 4px rgba(0,0,0, .5);
+    /* border: 1px solid #d803ff; */
+}
+
+
+.message-container > span {
+    text-align: center;
+    color: black;
+}
+
+.message-container > span > h1 {
+    color:rgb(219, 219, 219);
+    padding-bottom: .9rem;
+    border-bottom: 1px solid grey;
+}
+
+.inner-buttons {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.inner-buttons > button#btnYes {
+    background-color: rgba(31, 184, 0, 0.979);
+    padding: 1.5rem;
+    border-radius: .3rem;
+}
+
+.inner-buttons > button#btnNo {
+    background-color: rgba(196, 51, 46, 0.979);
+    margin-left: 3rem;
+    padding: 1.5rem;
+    border-radius: .3rem;
+}
+
+.inner-buttons ~ button {
+    float: left;
+}
+
+/* .available_quantity input {
+    display: inline-block;
+} */
+
+.available_quantity {
+    width: 40%;
+}
+
+
+.available_quantity > div {
+    display: block;
+    margin: 8px 0 8px 0px;
+}
+
+.available_quantity > div > span {
+    margin-left: 8px;
+}
+
+.loader {
+    display: none;
+    background-color: #232323ba;
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    height: 2000px;
+}
+
+
+.cstm-check-btn {
+    width: 25%;
+    padding: 13px;
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
