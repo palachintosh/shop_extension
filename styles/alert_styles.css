@@ -50,6 +50,17 @@
     border-radius: .3rem;
 }
 
+.inner-buttons > button#btnReserve {
+    background-color: darkorange;
+    margin-left: 3rem;
+    padding: 1.5rem;
+    border-radius: .3rem;
+}
+
+.inner-buttons > button:hover {
+    padding: 10%;
+}
+
 .inner-buttons ~ button {
     float: left;
 }

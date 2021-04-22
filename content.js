@@ -26,7 +26,13 @@ var interval;
 var getBodyBlock = document.getElementsByTagName('body')[0];
 var alert_div = document.createElement('div');
 
-alert_div.innerHTML = '<div class="alert-message"><div class="message-container"><span><h1></h1></span><div class="inner-buttons"><button id="btnYes" class="ant-btn ant-btn-danger">Potwierdzam!</button><button id="btnNo" class="ant-btn ant-btn-success">Nie teraz</button></div></div></div>';
+alert_div.innerHTML = '<div class="alert-message"><div class="message-container">\
+<span><h1></h1></span>\
+<div class="inner-buttons">\
+<button id="btnYes" class="ant-btn ant-btn-danger">Potwierdzam!</button>\
+<button id="btnReserve" class="ant-btn ant-btn-danger">Zdjąć rezerwację</button>\
+<button id="btnNo" class="ant-btn ant-btn-success">Nie teraz</button>\
+</div></div></div>';
 loader = document.createElement('div');
 loader.setAttribute("class", "loader");
 
@@ -269,8 +275,6 @@ function prestaCheck() {
 
                 warehouses_raw = getStocks(combination_id);
 
-                console.log(quantity_txt.value, combination_id, combinations_values, warehouses_raw);
-
                 var q_div = document.createElement('div');
                 var q_reserv = document.createElement('a'); //create button reserv
                 // add attributes
@@ -285,65 +289,20 @@ function prestaCheck() {
                 tr_val.appendChild(q_reserv);
                 tr_val.appendChild(q_div);
 
-                // q_reserv.addEventListener('click', function() {
-                //     reserve();
-                // })
-
                 $(this).css('display', 'inline-block');
                 counter += 1;
             }
-            
-
 
             clearInterval(q_interval);
         }
     }, 800)
 
+
     function setValue(success_response) {
-        console.log(success_response);
-
         if (success_response != null && success_response.x != null) {
-            // warehouses_raw = success_response.x["combination"];
-
-            // console.log("WH RAW: " + success_response);
-
-            // quantity_block = document.getElementById("qty_" + success_response.x["combination"]).lastElementChild;
-            // get_span = quantity_block.getElementsByClassName('wh-X')[0];
-            // console.log(get_span, quantity_block);
-            // if (success_response.x["quantity"] == null) {
-            //     get_span.innerText = "X: 0";
-            //     $(get_span).css("color", "red");
-            // }
-            // else {
-            //     get_span.innerText = "X: " + success_response.x["quantity"];
-            // }
-
-            // quantity_block = document.getElementById("qty_" + success_response.y["combination"]).lastElementChild;
-            // get_span = quantity_block.getElementsByClassName('wh-Y')[0];
-            // if (success_response.y["quantity"] == null) {
-            //     get_span.innerText = "Y: 0";
-            //     $(get_span).css("color", "red");
-            // }
-            // else {
-            //     get_span.innerText = "Y: " + success_response.y["quantity"];
-            // }
-
-            // quantity_block = document.getElementById("qty_" + success_response.shop["combination"]).lastElementChild;
-            // get_span = quantity_block.getElementsByClassName('wh-SHOP')[0];
-            // if (success_response.shop["quantity"] == null) {
-            //     get_span.innerText = "SHOP: 0";
-            //     $(get_span).css("color", "red");
-            // }
-            // else {
-            //     get_span.innerText = "SHOP: " + success_response.shop["quantity"];
-            // }
-
-
-
             warehouse_tags = ['x', 'y', 'shop'];
 
             warehouse_tags.forEach(war_tag => {
-                console.log("FROM ARRAY: ", war_tag.toUpperCase());
                 warehouses_raw = success_response[war_tag]["combination"];
                 war_class_name = "wh-" + war_tag.toUpperCase();
 
@@ -363,15 +322,60 @@ function prestaCheck() {
 
     }
 
-
-
+// Reservation handler >
     function reserve(comb_name) {
+
+        function addReservation(comb_name, phone_number) {
+            // request_link = "https://palachintosh.com/bikes_monitoring/" + combination;
+            // var warehouses_real;
+            
+            // var xhttp = new XMLHttpRequest();
+
+            // xhttp.onreadystatechange = function () {
+            //     if (xhttp.readyState == 4 && xhttp.status == 200) {
+            //         var resp_txt = xhttp.response;
+
+            //         if (resp_txt.success != null) {
+            //             success_response = resp_txt.success;
+    
+            //             if (success_response[combination] != null ) {
+            //                 warehouses_real = success_response[combination];
+            //                 setValue(warehouses_real);
+
+            //                 return warehouses_real;
+            //             }
+            //         }
+            //     }
+            // }
+            
+            // xhttp.responseType = "json";
+            // xhttp.open("GET", request_link, true);
+            // xhttp.setRequestHeader('Access-Control-Allow-Origin', "https://3gravity.pl");
+            // xhttp.send();
+            
+            return null;
+        }
+
         reserv_form = prompt("Numer telefonu klienta:");
-
-
         console.log(comb_name, reserv_form);
-    }
 
+        if(comb_name.length == 4 && reserv_form.length < 13 && reserv_form.length > 5) {
+            add_res = addReservation(comb_name.toString(), reserv_form.toString);
+
+            if(add_res != null) {
+                alert("Rezerwacja została zapisana! Możesz cofnąć ją przyciskiem.");
+            }
+            else {
+                alert("Dodanie rezerwacji nie powiodło się!")
+            }
+        }
+
+        else {
+            alert("Numer telefonu klienta został błędnie wpisany! Sprawdź to gówno jeszcze raz albo skontaktuj się z administratorem.");
+        }
+
+
+    }
 }
 
 
