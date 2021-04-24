@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Product manager",
+    "version": "1.1.0",
+    "description": "The extension for Kross and PrestaShop admin-panel for specific tasks.",
+    "homepage_url": "https://palachintosh.com/",
+    "icons": {
+        "16": "extension_icon.png",
+        "48": "extension_icon.png"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["http://my.kross.pl/*", "https://24.kross.pl/*", "https://3gravity.pl/*"],
+            "js": ["jquery-3.5.1.min.js", "content.js", "background.js"],
+            "css": ["/styles/alert_styles.css"],
+            "run_at": "document_idle",
+            "web_accessible_resources": [
+                "/styles/alert_styles.css",
+                "/custom_scripts/alert_new.js"
+            ]
+        }
+    ]
+
+}

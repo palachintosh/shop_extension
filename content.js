@@ -324,58 +324,68 @@ function prestaCheck() {
 
 // Reservation handler >
     function reserve(comb_name) {
+        var auth_token = 12345;
 
         function addReservation(comb_name, phone_number) {
-            // request_link = "https://palachintosh.com/bikes_monitoring/" + combination;
-            // var warehouses_real;
-            
-            // var xhttp = new XMLHttpRequest();
+            request_link = "https://palachintosh.com/bikes_monitoring/presta_extension/reserve/?" +
+            "comb_id=" + comb_name + "&" +
+            "active_stamp=1" + "&" +
+            "phone_number=" + phone_number + "&" +
+            "token=" + auth_token;
 
-            // xhttp.onreadystatechange = function () {
-            //     if (xhttp.readyState == 4 && xhttp.status == 200) {
-            //         var resp_txt = xhttp.response;
+            var xhttp = new XMLHttpRequest();
 
-            //         if (resp_txt.success != null) {
-            //             success_response = resp_txt.success;
-    
-            //             if (success_response[combination] != null ) {
-            //                 warehouses_real = success_response[combination];
-            //                 setValue(warehouses_real);
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    console.log(xhttp.response)
 
-            //                 return warehouses_real;
-            //             }
-            //         }
-            //     }
-            // }
+                    var resp_txt = xhttp.response;
+
+                    if (resp_txt.success != null) {
+                        success_response = resp_txt.success;
+                            return true;
+                        }
+
+                    if (reserv_form.Warning != null) {
+                        return reserv_form.Warning.toString();
+                    }
+
+                    if (reserv_form.error != null) {
+                        return reserv_form.error.toString();
+                    }
+                }
+            }
             
-            // xhttp.responseType = "json";
-            // xhttp.open("GET", request_link, true);
-            // xhttp.setRequestHeader('Access-Control-Allow-Origin', "https://3gravity.pl");
-            // xhttp.send();
+            xhttp.responseType = "json";
+            xhttp.open("GET", request_link, true);
+            xhttp.setRequestHeader('Access-Control-Allow-Origin', "https://3gravity.pl");
+            xhttp.send();
             
-            return null;
+            // return null;
         }
-
+    
         reserv_form = prompt("Numer telefonu klienta:");
         console.log(comb_name, reserv_form);
 
         if(comb_name.length == 4 && reserv_form.length < 13 && reserv_form.length > 5) {
-            add_res = addReservation(comb_name.toString(), reserv_form.toString);
+            add_res = addReservation(comb_name.toString(), reserv_form.toString());
 
-            if(add_res != null) {
+            if(add_res === true) {
                 alert("Rezerwacja została zapisana! Możesz cofnąć ją przyciskiem.");
             }
+
             else {
-                alert("Dodanie rezerwacji nie powiodło się!")
+                alert(add_res);
             }
         }
 
         else {
-            alert("Numer telefonu klienta został błędnie wpisany! Sprawdź to gówno jeszcze raz albo skontaktuj się z administratorem.");
+            alert("Numer telefonu klienta został błędnie wpisany! \
+            Sprawdź to gówno jeszcze raz albo skontaktuj się z administratorem.");
         }
 
-
     }
+
 }
 
 
