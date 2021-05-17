@@ -1,6 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Product manager",
+    "options_page": "options.html",
     "version": "1.1.0",
     "description": "The extension for Kross and PrestaShop admin-panel for specific tasks.",
     "homepage_url": "https://palachintosh.com/",
@@ -8,6 +9,10 @@
         "16": "extension_icon.png",
         "48": "extension_icon.png"
     },
+
+    "permissions": [
+        "storage"
+    ],
 
     "content_scripts": [
         {

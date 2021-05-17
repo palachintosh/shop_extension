@@ -17,8 +17,15 @@
 */
   
 //   palachintosh.com and 3gravity.com
+var token = null;
 
+function readToken() {
+    chrome.storage.local.get(['token'], function (items) {
+        token = items.token;
+    });
+}
 
+readToken();
 
 
 
@@ -176,7 +183,8 @@ function response_validator (resp_txt) {
 
 function sendRequest(code) {
     function sendGET() {  
-        var request_url = "https://palachintosh.com/bikes_monitoring/kross_api/" + "?code=" + code;
+        var request_url = "https://palachintosh.com/bikes_monitoring/kross_api/" + "?code=" + code +
+        "&token=" + token;
         let xhttp = new XMLHttpRequest();
         
         xhttp.onload = function () {
@@ -235,7 +243,8 @@ function prestaCheck() {
 
 
     function getStocks(combination) {
-        request_link = "https://palachintosh.com/bikes_monitoring/presta_extension/?" + combination;
+        request_link = "https://palachintosh.com/bikes_monitoring/presta_extension/?" + combination +
+        "&token=" + token;
         var warehouses_real;
         
         var xhttp = new XMLHttpRequest();
@@ -331,7 +340,7 @@ function prestaCheck() {
             "comb_id=" + comb_name + "&" +
             "active_stamp=1" + "&" +
             "phone_number=" + phone_number + "&" +
-            "token=" + auth_token;
+            "token=" + token;
 
             var xhttp = new XMLHttpRequest();
 
@@ -400,7 +409,8 @@ function check_all() {
     form_listener = document.querySelector("#app > div > div > div > div > section > div > main > div > form > section:nth-child(3) > div");
     
     $(form_listener).on('click', 'div', function() {
-        get_section_param = document.querySelector("#app > div > div > div > div > section > div > main > div > form > section:nth-child(5) > div");
+        //get_section_param = document.querySelector("#app > div > div > div > div > section > div > main > div > form > section:nth-child(5) > div");
+        get_section_param = document.querySelector("#app > div > div > div > div > section > div > main > div > form > section:nth-child(3) > div");
         get_section_param.prepend(clickbox_div);
     });
 
