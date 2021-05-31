@@ -174,7 +174,7 @@ function response_validator (resp_txt) {
         alert("Unable to delete product!");
     }
 
-    loader_block.style.display = "block";
+    loader_block.style.display = "none";
 
     //Launch main interval
     main_interval();
@@ -206,18 +206,15 @@ function sendRequest(code) {
 
     if (code != null) {
         loader_block.style.display = "block";
-
-        get_alert_div = document.getElementsByClassName('alert-message')[0];
-        $(get_alert_div).css('display', 'block');
     
         $('#btnNo').on('click', function () {
-            $(get_alert_div).css('display', 'none');
+            loader_block.style.display = "none";
             main_interval();
         });
 
         $('#btnYes').on('click', function () {
             sendGET();
-            $(get_alert_div).css('display', 'none');
+            loader_block.style.display = "none";
         });
     }
 }
