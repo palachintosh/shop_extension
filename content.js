@@ -410,7 +410,7 @@ function check_all() {
     
     $(form_listener).on('click', 'div', function() {
         //get_section_param = document.querySelector("#app > div > div > div > div > section > div > main > div > form > section:nth-child(5) > div");
-        get_section_param = document.querySelector("#app > div > div > div > div > section > div > main > div > form > section:nth-child(3) > div");
+        get_section_param = document.querySelector("#app > div > div.ant-spin-nested-loading > div > div > section > div > main > div > form > div.block-with-confirm > div.block-disabled-body > section.form-section.section-checkboxs > div");
         get_section_param.prepend(clickbox_div);
     });
 
@@ -424,8 +424,7 @@ function check_all() {
     $(clickbox_div).on('click', 'span', function() {
         //get form container by selector 
         checked = false;
-        get_checkboxes = document.querySelector("#app > div > div > div > div > section > div > main > div > form > section:nth-child(5) > div > div:nth-child(2) > div > div > div > div.ant-checkbox-group");
-
+        get_checkboxes = document.querySelector("#app > div > div.ant-spin-nested-loading > div > div > section > div > main > div > form > div.block-with-confirm > div.block-disabled-body > section.form-section.section-checkboxs > div > div:nth-child(2) > div > div > div > div.ant-checkbox-group");
         //Get child node collection from form
         checkbox_child = get_checkboxes.childNodes;
         
