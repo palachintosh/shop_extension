@@ -103,3 +103,214 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+#reserveBlock {
+    width: 50%;
+    height: 401px;
+    position: absolute;
+    left: 25%;
+    top: 30%;
+    z-index: 99999;
+    background-color: rgb(4 161 219);
+    border-radius: 7px;
+    box-shadow: 3px 3px 6px grey;
+    display: none;
+}
+
+#reserveBlock > h2 {
+    color: chartreuse;
+    margin: 1rem;
+    text-align: center;
+}
+
+#reserveBlock > hr {
+    width: 95%;
+}
+
+.res_input {
+    width: 80%;
+    font-size: 14pt;
+    border-radius: 3rem;
+    box-shadow: unset;
+    padding: .5rem 1.3rem;
+    display: block;
+    border-style: none;
+    margin: 20px 0px 3rem 20px;
+}
+
+#reserveForm > label {
+    margin-left: 20px;
+    color: white;
+    font-size: 12pt;
+}
+
+.btn-make-res {
+    background-color: rgba(34, 199, 1, 0.979);
+    margin: 3rem;
+    padding: 1.3rem;
+    border-radius: .3rem;
+    float: left;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-disc-res {
+    background-color: rgba(199, 1, 1, 0.979);
+    margin: 3rem;
+    padding: 1.3rem;
+    border-radius: .3rem;
+    float: left;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-make-res:hover {
+    background-color: rgba(19, 110, 1, 0.979);
+    border: 1px solid rgba(0, 206, 79, 0.979);
+}
+
+.btn-disc-res:hover {
+    background-color: rgba(119, 3, 3, 0.979);
+    border: 1px solid rgba(196, 51, 46, 0.979);
+}
+
+
+.btn-check-and-d {
+    background-color: deeppink;
+    border:  1px solid rgb(245, 73, 245);
+    margin: 3rem;
+    padding: 1.3rem;
+    border-radius: .3rem;
+    float: left;
+    cursor: pointer;
+    color: white;
+}
+
+#discardReserveUl {
+    list-style: none;
+    overflow-y: scroll;
+    max-height: 55%;
+    display: none;
+}
+
+#discardReserveUl > li {
+    padding: 2rem;
+    color: white;
+    font-size: 12pt;
+    margin-left: -4rem;
+    border-bottom: 1px solid darkgrey;
+}
+
+#discardReserveUl > li > span {
+    margin-right: 1rem;
+}
+
+#discardReserveUl > li > span:nth-child(1) {
+    color: rgb(3, 226, 59);
+    font-size: 13pt;
+    margin-right: 1.2rem;
+}
+
+#discardReserveUl > li > a {
+    background-color: deeppink;
+    border:  1px solid rgb(245, 73, 245);
+    margin: .3rem;
+    padding: 1rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    color: white;
+}
+
+.order-cover {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(136, 219, 80, .4);
+    display: none;
+}
+
+.table > tbody > tr {
+    position: relative;
+    transition: .4s;
+}
+
+.print-card-btn {
+    text-decoration: unset;
+    cursor: pointer;
+}
+
+.print-card-btn:hover {
+    text-decoration: unset !important;
+}
+
+.dd-menu {
+    position: absolute;
+    width: 300px;
+    /* height: 100px; */
+    background-color: #363a41;
+    z-index: 9999;
+    display: none;
+    left: 2.1rem;
+    padding: 1rem;
+    box-shadow: 0px 0px 5px 0px rgb(67, 158, 233);
+}
+.select-form {
+    color: white;
+}
+
+
+.select-form > input{
+    /* display: block; */
+    margin-bottom: 10px;
+    color: black;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.select-form .number-inline {
+    width: 50px;
+    color: black;
+    margin-right: 4px;
+}
+
+.select-manually {
+    display: block;
+    background-color: rgba(1, 126, 199, 0.979);
+    cursor: pointer;
+    border-radius: 3px;
+    margin-bottom:10px;
+    box-sizing: border-box;
+}
+
+.select-manually > p {
+    color: white;
+    text-align: center;
+}
+
+.select-manually:hover {
+    background-color: rgba(6, 164, 255, 0.979);
+}
+
+#cardGenSubmit {
+    color: white;
+    background-color: rgba(71, 189, 55, 0.979);
+    display: block;
+    margin-left: 25%;
+    width: 50%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.download-card {
+    padding: .25rem;
+    margin-top: 10px;
+    color: white !important;
+    text-decoration: none !important;
+    background-color: rgb(216, 9, 99);
+    display: block;
+    margin-left: 25%;
+    width: 50%;
+    text-align: center;
+}
